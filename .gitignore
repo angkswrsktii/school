@@ -1,1 +1,8 @@
-.idea/.gitignore
+# Default ignored filesAdd commentMore actions
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/Add commentMore actions
+/dataSources.local.xml
