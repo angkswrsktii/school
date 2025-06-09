@@ -32,13 +32,19 @@ func TestSchoolActivityApp(t *testing.T) {
 
 	t.Run("mark activity as completed", func(t *testing.T) {
 		app.InitializeActivities()
-		_ = app.InsertActivity("Math Club")
+		err := app.InsertActivity("Math Club")
+		assert.NoError(t, err)
 
-		activities := app.GetAllActivities()
-		assert.False(t, activities[0].IsCompleted())
+		activityItem, err := app.GetActivity(0)
+		assert.NoError(t, err)
 
-		activities[0].ToggleCompletion()
-		assert.True(t, activities[0].IsCompleted())
+		assert.Equal(t, false, activityItem.IsCompleted())
+		activityItem.ToggleCompletion()
+		assert.Equal(t, true, activityItem.IsCompleted())
+
+		activityItem, err = app.GetActivity(0)
+		assert.NoError(t, err)
+		assert.Equal(t, true, activityItem.IsCompleted())
 	})
 
 	t.Run("unmark activity as completed", func(t *testing.T) {

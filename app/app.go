@@ -58,14 +58,15 @@ func GetAllActivities() []SchoolActivity {
 	return activities
 }
 
-func GetActivity(id int) (SchoolActivity, error) {
+func GetActivity(id int) (*SchoolActivity, error) {
 	if activities == nil {
 		InitializeActivities()
+		return nil, ErrNotFound
 	}
 	if id < 0 || id >= len(activities) {
-		return SchoolActivity{}, ErrNotFound
+		return nil, ErrNotFound
 	}
-	return activities[id], nil
+	return &activities[id], nil
 }
 
 func RemoveActivity(id int) error {
