@@ -91,9 +91,6 @@ func main() {
 
 			activity.ToggleCompletion()
 
-			activities := app.GetAllActivities()
-			activities[id-1] = activity
-
 			fmt.Println("Success!")
 			break
 
